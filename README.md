@@ -15,12 +15,19 @@
 
 ## Документация
 
-Использование: main.py [-h] [-c] {pep,whats-new,latest-versions,download} [-o {pretty,file}]
+Использование: 
+```
+main.py [-h] [-c] {pep,whats-new,latest-versions,download} [-o {pretty,file}]
+```
 
 Обязательные аргументы:
+```
   {pep,whats-new,latest-versions,download}    Режимы работы парсера
+```
 
 Необязательные аргументы:
+```
   -h, --help            Показ документации
   -c, --clear-cache     Очистка кеша
   -o {pretty,file}, --output {pretty,file}    Дополнительные способы вывода данных
+```
