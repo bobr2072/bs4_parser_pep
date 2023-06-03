@@ -27,16 +27,21 @@ def pep(session):
     results = [('Статус', 'Количество')]
 
     for pep in tqdm(tr_tags):
+
         total_peps += 1
+
         data = list(find_tag(pep, 'abbr').text)
         preview_status = data[1:][0] if len(data) > 1 else ''
+
         url = urljoin(PEP_URL, find_tag(pep, 'a', attrs={
             'class': 'pep reference internal'})['href'])
         soup = get_soup(session, url)
+
         table_info = find_tag(soup, 'dl',
                               attrs={'class': 'rfc2822 field-list simple'})
         status_pep_page = table_info.find(
             string='Status').parent.find_next_sibling('dd').string
+
         if status_pep_page in status_sum:
             status_sum[status_pep_page] += 1
         if status_pep_page not in status_sum:
@@ -48,9 +53,11 @@ def pep(session):
                              f'Ожидаемые статусы: '
                              f'{EXPECTED_STATUS[preview_status]}')
             logging.warning(error_message)
+
     for status in status_sum:
         results.append((status, status_sum[status]))
     results.append(('Total', total_peps))
+
     return results
 
 
