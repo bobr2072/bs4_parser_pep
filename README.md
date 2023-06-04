@@ -31,3 +31,7 @@ main.py [-h] [-c] {pep,whats-new,latest-versions,download} [-o {pretty,file}]
   -c, --clear-cache     Очистка кеша
   -o {pretty,file}, --output {pretty,file}    Дополнительные способы вывода данных
 ```
+
+## Автор
+
+Boris Korenblias

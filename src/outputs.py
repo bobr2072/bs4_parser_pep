@@ -10,13 +10,16 @@ from constants import BASE_DIR, DATETIME_FORMAT
 def control_output(results, cli_args):
     """Control results of output."""
 
+    outputs = {
+        'pretty': pretty_output,
+        'file': file_output,
+    }
+
     output = cli_args.output
-    if output == 'pretty':
-        pretty_output(results)
-    elif output == 'file':
-        file_output(results, cli_args)
+    if output in outputs:
+        return outputs[output](results, cli_args)
     else:
-        default_output(results)
+        return default_output(results)
 
 
 def default_output(results):
