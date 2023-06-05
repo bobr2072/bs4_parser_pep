@@ -17,7 +17,10 @@ def control_output(results, cli_args):
 
     output = cli_args.output
     if output in outputs:
-        return outputs[output](results, cli_args)
+        try:
+            return outputs[output](results, cli_args)
+        except TypeError:
+            return outputs[output](results)
     else:
         return default_output(results)
 
