@@ -57,4 +57,4 @@ def file_output(results, cli_args):
         writer = csv.writer(f, dialect='unix')
         writer.writerows(results)
 
-    logging.info(f'Файл с результатами был сохранён: {file_path}')
+    logging.info(f'Result file was saved: {file_path}')

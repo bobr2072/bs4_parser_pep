@@ -1,37 +1,37 @@
-# Проект парсинга PEP
+# Parsing of PEP with Beautiful Soup
 
-## Технологии
+## Stack
 
 [![Python](https://img.shields.io/badge/-Python-464646?style=flat&logo=Python&logoColor=ffffff&color=043A6B)](https://www.python.org/)
 [![BeautifulSoup4](https://img.shields.io/badge/-BeautifulSoup4-464646?style=flat&logo=BeautifulSoup4&logoColor=ffffff&color=043A6B)](https://www.crummy.com/software/BeautifulSoup/)
 [![Prettytable](https://img.shields.io/badge/-Prettytable-464646?style=flat&logo=Prettytable&logoColor=ffffff&color=043A6B)](https://github.com/jazzband/prettytable)
 [![Logging](https://img.shields.io/badge/-Logging-464646?style=flat&logo=Logging&logoColor=ffffff&color=043A6B)](https://docs.python.org/3/library/logging.html)
 
-## Описание
+## Description
 
-Парсер собирает данные обо всех PEP документах, сравнивает статусы и записывает их в файл,
-также реализованы сбор информации о статусе версий, скачивание архива с документацией и сбор ссылок о новостях в Python,
-логирует свою работу и ошибки в командную строку и файл логов.
+The parser collects data about all PEP documents, compares statuses and writes them to a file,
+collection of information about the status of versions, downloading an archive with documentation and collecting links about news in Python are also implemented,
+logs its work and errors to the command line and a log file.
 
-## Документация
+## Documentation
 
-Использование: 
+Usage: 
 ```
 main.py [-h] [-c] {pep,whats-new,latest-versions,download} [-o {pretty,file}]
 ```
 
-Обязательные аргументы:
+Required Arguments:
 ```
-  {pep,whats-new,latest-versions,download}    Режимы работы парсера
-```
-
-Необязательные аргументы:
-```
-  -h, --help            Показ документации
-  -c, --clear-cache     Очистка кеша
-  -o {pretty,file}, --output {pretty,file}    Дополнительные способы вывода данных
+  {pep,whats-new,latest-versions,download}    Parser operating modes
 ```
 
-## Автор
+Optional Arguments:
+```
+  -h, --help            Show documentation
+  -c, --clear-cache     Clearing cache
+  -o {pretty,file}, --output {pretty,file}    Additional data output methods
+```
+
+## Author
 
 Boris Korenblias

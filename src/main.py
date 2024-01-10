@@ -24,7 +24,7 @@ def pep(session):
     status_sum = {}
     total_peps = 0
 
-    results = [('Статус', 'Количество')]
+    results = [('Status', 'Amount')]
 
     for pep in tqdm(tr_tags):
 
@@ -47,10 +47,10 @@ def pep(session):
         if status_pep_page not in status_sum:
             status_sum[status_pep_page] = 1
         if status_pep_page not in EXPECTED_STATUS[preview_status]:
-            error_message = (f'Несовпадающие статусы:\n'
+            error_message = (f'Mismatching statuses:\n'
                              f'{url}\n'
-                             f'Статус в карточке: {status_pep_page}\n'
-                             f'Ожидаемые статусы: '
+                             f'Status in card: {status_pep_page}\n'
+                             f'Expected statuses: '
                              f'{EXPECTED_STATUS[preview_status]}')
             logging.warning(error_message)
 
@@ -79,7 +79,7 @@ def whats_new(session):
         'li', attrs={'class': 'toctree-l1'}
     )
 
-    results = [('Ссылка на статью', 'Заголовок', 'Редактор, Автор')]
+    results = [('Link to article', 'Title', 'Editor, Author')]
 
     for section in tqdm(sections_by_python):
 
@@ -116,11 +116,11 @@ def latest_versions(session):
             a_tags = ul.find_all('a')
             break
     else:
-        raise Exception('Не найден список c версиями Python')
+        raise Exception('List with Python versions not found')
 
     pattern = r'Python (?P<version>\d\.\d+) \((?P<status>.*)\)'
 
-    results = [('Ссылка на документацию', 'Версия', 'Статус')]
+    results = [('Link to documentation', 'Version', 'Status')]
 
     for a_tag in a_tags:
 
@@ -163,7 +163,7 @@ def download(session):
     with open(archive_path, 'wb') as file:
         file.write(response.content)
 
-    logging.info(f'Архив был загружен и сохранён: {archive_path}')
+    logging.info(f'The archive was downloaded and saved: {archive_path}')
 
 
 MODE_TO_FUNCTION = {
@@ -178,12 +178,12 @@ def main():
 
     configure_logging()
 
-    logging.info('Парсер запущен!')
+    logging.info('Parser started!')
 
     arg_parser = configure_argument_parser(MODE_TO_FUNCTION.keys())
     args = arg_parser.parse_args()
 
-    logging.info(f'Аргументы командной строки: {args}')
+    logging.info(f'Command line arguments: {args}')
 
     session = requests_cache.CachedSession()
     if args.clear_cache:
@@ -195,7 +195,7 @@ def main():
     if results is not None:
         control_output(results, args)
 
-    logging.info('Парсер завершил работу.')
+    logging.info('Parser has completed its work.')
 
 
 if __name__ == '__main__':

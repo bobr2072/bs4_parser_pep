@@ -11,26 +11,28 @@ DT_FORMAT = '%d.%m.%Y %H:%M:%S'
 def configure_argument_parser(available_modes):
     """Configuration of command line arguments."""
 
-    parser = argparse.ArgumentParser(description='Парсер документации Python')
+    parser = argparse.ArgumentParser(
+        description='Parser Documentation of Python'
+    )
 
     parser.add_argument(
         'mode',
         choices=available_modes,
-        help='Режимы работы парсера'
+        help='Parser operating modes'
     )
 
     parser.add_argument(
         '-c',
         '--clear-cache',
         action='store_true',
-        help='Очистка кеша'
+        help='Clearing cache'
     )
 
     parser.add_argument(
         '-o',
         '--output',
         choices=('pretty', 'file'),
-        help='Дополнительные способы вывода данных'
+        help='Additional data output methods'
     )
 
     return parser
